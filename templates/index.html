@@ -14,5 +14,12 @@
         <input type="text" id="weather_data" name="weather_data" required>
         <button type="submit">Predict</button>
     </form>
+
+    <!-- Display the weather data -->
+    <h1>Current Weather</h1>
+    <p>Temperature: {{ weather_data.main.temp }}°C</p>
+    <p>Weather: {{ weather_data.weather[0].description }}</p>
+    <!-- Add more data fields as needed -->
+
 </body>
 </html>
