@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h2>Prediction Results</h2>
+    
+    <!-- Display predicted plant suitability scores -->
+    {% for plant, suitability in predicted_suitabilities.items() %}
+        <p>{{ plant }}: {{ suitability }}</p>
+    {% endfor %}
+</body>
+</html>
