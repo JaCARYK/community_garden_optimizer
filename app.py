@@ -1,26 +1,18 @@
-# - project_folder/
-#   - app.py
-#   - templates/
-#     - index.html
-#     - result.html  # For displaying ML results
-#   - static/
-#     - style.css   # CSS styles for your templates
-#   - ml_model/
-#     - linear_regression_model.py  # Your ML model code
-
-
-
+# Import necessary modules
 from flask import Flask, render_template, request
 import requests
 from ml_model.linear_regression_model import predict_suitability
 
+# Create a Flask app instance
 app = Flask(__name__)
 
+# Define the route for the home page
 @app.route('/')
 def home():
     return 'Welcome to the Community Garden Optimizer!'
 
-@app.route('/index')
+# Define the route for displaying weather data and receiving predictions
+@app.route('/')
 def index():
     # Make API request to Open Meteo
     api_key = 'YOUR_OPEN_METEO_API_KEY'
@@ -32,6 +24,7 @@ def index():
     # Pass data to the frontend
     return render_template('index.html', weather_data=weather_data)
 
+# Define the route for handling predictions
 @app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
@@ -44,5 +37,6 @@ def predict():
         # Render the results page with predicted data
         return render_template('result.html', predicted_suitabilities=predicted_suitabilities)
 
+# Run the Flask app if this file is executed directly
 if __name__ == '__main__':
     app.run(debug=True, port=5002)
